@@ -21,10 +21,14 @@ public class SelectionSort implements SortAlgorithm {
 		int k = unsorted.length;
 		for (int i = 0; i < k - 1; i++) {
 			T min = unsorted[i];
+			int index = i;
 			for (int j = i + 1; j < k; j++) {
-				if (SortUtils.less(unsorted[j], min))
-					SortUtils.swap(unsorted, i, j);
+				if (SortUtils.less(unsorted[j], unsorted[index])){
+					min=unsorted[j];
+					index = j;
+				}
 			}
+			SortUtils.swap(unsorted, i, index);
 		}
 		return unsorted;
 	}
